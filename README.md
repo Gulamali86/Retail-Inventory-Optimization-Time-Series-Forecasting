@@ -11,9 +11,6 @@ A data-driven web application built with **Streamlit** to help warehouse and ret
 
 > 🔗 **Click here to interact with the live application:** [Open Live Dashboard](https://retail-inventory-optimization-time-series-forecasting.streamlit.app/)
 
-*(Optional: Once your app is up and running, take a screenshot of your beautiful dashboard, upload it to GitHub, and replace the placeholder text below to show off your UI!)*
-![App Dashboard Preview](https://via.placeholder.com/800x450.png?text=Retail+Inventory+Dashboard+Preview)
-
 ---
 
 ## ✨ Features
