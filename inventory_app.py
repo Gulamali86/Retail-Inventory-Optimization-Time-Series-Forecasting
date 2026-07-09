@@ -9,9 +9,9 @@ import os
 st.set_page_config(page_title="Retail Inventory Optimization Portal", layout="wide")
 st.title("📈 Retail Inventory Optimization & Time-Series Sales Tracker")
 
-# --- FILE UPLOADER COMPONENT ---
-st.sidebar.header("📁 Data Source Configuration")
-uploaded_file = st.sidebar.file_uploader("Upload your Retail Inventory CSV file", type=["csv"])
+# --- CENTERED FILE UPLOADER COMPONENT ---
+st.markdown("### 📁 Data Source Configuration")
+uploaded_file = st.file_uploader("Drag and drop or browse your Retail Inventory CSV file here", type=["csv"])
 
 # Load data dynamically based on user input or fallback file
 @st.cache_data
@@ -26,21 +26,21 @@ df = None
 if uploaded_file is not None:
     try:
         df = load_data(uploaded_file)
-        st.sidebar.success("✅ Custom data loaded successfully!")
+        st.success("✅ Custom data loaded successfully!")
     except Exception as e:
-        st.sidebar.error(f"❌ Error reading file. Please ensure columns match standard schema.")
+        st.error(f"❌ Error reading file. Please ensure columns match standard schema.")
 elif os.path.exists("retail_inventory_sales_data.csv"):
     # Fallback to your default file if it exists in the GitHub repo
     df = load_data("retail_inventory_sales_data.csv")
-    st.sidebar.info("💡 Running on default system dataset.")
+    st.info("💡 Running on default system dataset.")
 else:
     # If there is no uploaded file AND no default file exists
-    st.warning("👋 Welcome! Please upload a retail inventory CSV file in the sidebar to populate the optimization engine.")
+    st.warning("👋 Welcome! Please upload a retail inventory CSV file above to populate the optimization engine.")
     st.info("ℹ️ Your CSV file needs to contain at least these columns: `Date`, `Category`, `Units_Sold`, `Current_Stock_Level`, and `UnitPrice`.")
 
 # --- MAIN APP LOGIC (Only runs if data is successfully loaded) ---
 if df is not None:
-    # Sidebar controls for warehouse managers
+    # Sidebar controls for warehouse managers (Kept here for clean layout filter)
     st.sidebar.header("Filter Inventory Category")
     selected_category = st.sidebar.selectbox("Select Product Segment", df['Category'].unique())
 
